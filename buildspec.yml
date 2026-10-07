@@ -1,0 +1,17 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo "Checking Docker..."
+      - docker --version
+      - docker compose version
+
+  build:
+    commands:
+      - echo "Building Todo application..."
+      - docker compose build
+
+  post_build:
+    commands:
+      - echo "Build completed successfully."

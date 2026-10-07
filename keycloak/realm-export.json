@@ -18,7 +18,10 @@
       "redirectUris": [
         "http://localhost:3000/*",
         "http://localhost:3000/",
-        "http://localhost:3000"
+        "http://localhost:3000",
+	"http://13.201.106.61:3000/*",
+  	"http://13.201.106.61:3000/",
+  	"http://13.201.106.61:3000"
       ],
       "webOrigins": [
         "*"

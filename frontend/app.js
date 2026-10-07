@@ -1,6 +1,6 @@
 // Configuration
-const API_BASE_URL = window.API_BASE_URL || 'http://localhost:8000';
-const KEYCLOAK_BASE_URL = window.KEYCLOAK_BASE_URL || 'http://localhost:8080';
+const API_BASE_URL = window.API_BASE_URL || 'http://13.201.106.61:8000';
+const KEYCLOAK_BASE_URL = window.KEYCLOAK_BASE_URL || 'http://13.201.106.61:8080';
 const REALM = 'todo-realm';
 const CLIENT_ID = 'todo-frontend';
 
