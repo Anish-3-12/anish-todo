@@ -1,0 +1,64 @@
+{
+  "id": "todo-realm",
+  "realm": "todo-realm",
+  "displayName": "Todo Application Realm",
+  "enabled": true,
+  "sslRequired": "NONE",
+  "registrationAllowed": true,
+  "loginWithEmailAllowed": true,
+  "clients": [
+    {
+      "clientId": "todo-frontend",
+      "name": "Todo Frontend Client",
+      "enabled": true,
+      "publicClient": true,
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": true,
+      "directAccessGrantsEnabled": true,
+      "redirectUris": [
+        "http://localhost:3000/*",
+        "http://localhost:3000/",
+        "http://localhost:3000"
+      ],
+      "webOrigins": [
+        "*"
+      ],
+      "attributes": {
+        "access.token.lifespan": "3600"
+      }
+    }
+  ],
+  "users": [
+    {
+      "username": "testuser",
+      "enabled": true,
+      "email": "testuser@example.com",
+      "firstName": "Test",
+      "lastName": "User",
+      "emailVerified": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "testpassword123",
+          "temporary": false
+        }
+      ]
+    },
+    {
+      "username": "testuser2",
+      "enabled": true,
+      "email": "testuser2@example.com",
+      "firstName": "Test2",
+      "lastName": "User2",
+      "emailVerified": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "testpassword123",
+          "temporary": false
+        }
+      ]
+    }
+  ]
+}
+

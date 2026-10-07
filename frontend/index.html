@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo App with Keycloak Auth</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Todo App</h1>
+      <p class="subtitle">Phase 4 - Keycloak Authentication</p>
+    </header>
+
+    <!-- Notification message box -->
+    <div id="notification" class="notification hidden"></div>
+
+    <!-- Auth State Section -->
+    <section id="auth-card" class="card auth-card">
+      <!-- Logged-in State View -->
+      <div id="user-info-panel" class="user-info-panel hidden">
+        <div class="user-badge">
+          <span class="user-icon">&#128100;</span>
+          <div>
+            <div class="user-greeting">Logged in as <strong id="current-username"></strong></div>
+            <div class="user-id-sub" id="current-user-sub"></div>
+          </div>
+        </div>
+        <button id="logout-btn" class="btn btn-secondary btn-sm">Log Out</button>
+      </div>
+
+      <!-- Logged-out Login Form View -->
+      <div id="login-panel" class="login-panel">
+        <h2>Keycloak Login</h2>
+        <p class="login-desc">Sign in with your Keycloak credentials to access your personal todos.</p>
+        
+        <form id="login-form">
+          <div class="form-group">
+            <label for="login-username">Username</label>
+            <input type="text" id="login-username" value="testuser" required>
+          </div>
+          <div class="form-group">
+            <label for="login-password">Password</label>
+            <input type="password" id="login-password" value="testpassword123" required>
+          </div>
+          <div class="auth-buttons">
+            <button type="submit" id="login-btn" class="btn btn-primary">Log In</button>
+            <button type="button" id="keycloak-redirect-btn" class="btn btn-secondary">Keycloak Hosted Page</button>
+          </div>
+        </form>
+
+        <div class="auth-hint">
+          <strong>Available Test Accounts:</strong><br>
+          &bull; <code>testuser</code> / <code>testpassword123</code><br>
+          &bull; <code>testuser2</code> / <code>testpassword123</code>
+        </div>
+      </div>
+    </section>
+
+    <!-- Protected Todo Application Views -->
+    <div id="app-content" class="hidden">
+      <!-- Create Todo Form -->
+      <section class="card create-card">
+        <h2>Create New Todo</h2>
+        <form id="create-todo-form">
+          <div class="form-group">
+            <label for="todo-title">Title *</label>
+            <input type="text" id="todo-title" placeholder="What needs to be done?" required>
+          </div>
+          <div class="form-group">
+            <label for="todo-description">Description</label>
+            <textarea id="todo-description" rows="2" placeholder="Add optional details..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Add Todo</button>
+        </form>
+      </section>
+
+      <!-- Todo List Section -->
+      <section class="card list-card">
+        <div class="list-header">
+          <h2>Your Todos</h2>
+          <button id="refresh-btn" class="btn btn-secondary btn-sm" title="Refresh List">Refresh</button>
+        </div>
+        <div id="loading" class="loading-state">Loading todos...</div>
+        <div id="empty-state" class="empty-state hidden">No todos yet for this account! Create one above.</div>
+        <ul id="todo-list" class="todo-list"></ul>
+      </section>
+    </div>
+  </div>
+
+  <!-- Edit Todo Modal -->
+  <div id="edit-modal" class="modal hidden">
+    <div class="modal-overlay" id="modal-overlay"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Edit Todo</h3>
+        <button id="close-modal-btn" class="close-btn">&times;</button>
+      </div>
+      <form id="edit-todo-form">
+        <input type="hidden" id="edit-todo-id">
+        <div class="form-group">
+          <label for="edit-todo-title">Title *</label>
+          <input type="text" id="edit-todo-title" required>
+        </div>
+        <div class="form-group">
+          <label for="edit-todo-description">Description</label>
+          <textarea id="edit-todo-description" rows="3"></textarea>
+        </div>
+        <div class="form-group checkbox-group">
+          <label>
+            <input type="checkbox" id="edit-todo-completed">
+            Completed
+          </label>
+        </div>
+        <div class="modal-actions">
+          <button type="button" id="cancel-edit-btn" class="btn btn-secondary">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
